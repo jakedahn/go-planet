@@ -8,7 +8,8 @@ import (
 
 func TestGet(t *testing.T) {
 	Convey("NewClient gives a pointer to a sling client", t, func() {
-		client := NewClient()
+		client := NewClient("testkey")
 		So(client.sling, ShouldNotBeNil)
+		So(client.apiKey, ShouldEqual, "testkey")
 	})
 }

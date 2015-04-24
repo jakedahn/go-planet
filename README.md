@@ -1,12 +1,18 @@
 go-planet - Unofficial Planet.com API Client
 ============================================
 
-This is the first pass at a golang api client for planet.com
+This is the first pass at a golang api client for the planet.com API. This is very experimental, and unlikely to work, please do not use until this readme claims that things should work.
 
 ### TODO
 
 * scenes endpoint
+* mosaics endpoint
 * setup travisci
+
+### questions
+
+* How do we test/mock an HTTP request? (aka verify that the client built a specific request and sent it to a server)?
+* How do we setup benchmarks?
 
 
 ## License

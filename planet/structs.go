@@ -5,44 +5,44 @@ type Coordinate [2]CoordType
 
 type FeatureCollection struct {
 	Features []Feature `json:"features"`
-	Links    struct {
-		Frist string `json:"first"`
-		Next  string `json:"next"`
-		Prev  string `json:"prev"`
-		Self  string `json:"self"`
-	} `json:"links"`
+	// Links    struct {
+	// 	Frist string `json:"first"`
+	// 	Next  string `json:"next"`
+	// 	Prev  string `json:"prev"`
+	// 	Self  string `json:"self"`
+	// } `json:"links"`
 }
 
 type Properties struct {
-	Acquired string `json:"acquired,omitempty"`
-	// FileSize int32  `json:"file_size,omitempty"`
-	// // CloudCover struct {
-	// // 	Estimated float64 `json:"estimated,omitempty"`
-	// // } `json:"cloud_cover,omitempty"`
+	// Acquired string `json:"acquired,omitempty"`
+	// FileSize   int32  `json:"file_size,omitempty"`
+	// CloudCover struct {
+	// 	Estimated float64 `json:"estimated,omitempty"`
+	// } `json:"cloud_cover,omitempty"`
 
-	// // ImageStatistics struct {
-	// // 	SNR float64 `snr:"foo,omitempty"`
-	// // } `json:"image_statistics,omitempty"`
+	// ImageStatistics struct {
+	// 	SNR float64 `snr:"foo,omitempty"`
+	// } `json:"image_statistics,omitempty"`
 
-	// // Links struct {
-	// // 	Full            string `json:"full,omitempty"`
-	// // 	Self            string `json:"self,omitempty"`
-	// // 	SquareThumbnail string `json:"square_thumbnail,omitempty"`
-	// // 	Thumbnail       string `json:"thumbnail,omitempty"`
-	// // } `json:"links,omitempty"`
+	// Links struct {
+	// 	Full            string `json:"full,omitempty"`
+	// 	Self            string `json:"self,omitempty"`
+	// 	SquareThumbnail string `json:"square_thumbnail,omitempty"`
+	// 	Thumbnail       string `json:"thumbnail,omitempty"`
+	// } `json:"links,omitempty"`
 
-	// // Sat struct {
-	// // 	Alt      float64 `json:"alt,omitempty"`
-	// // 	Lat      float64 `json:"lat,omitempty"`
-	// // 	Lng      float64 `json:"lng,omitempty"`
-	// // 	OffNadir float64 `json:"off_nadir,omitempty"`
-	// // } `json:"sat,omitempty"`
+	// Sat struct {
+	// 	Alt      float64 `json:"alt,omitempty"`
+	// 	Lat      float64 `json:"lat,omitempty"`
+	// 	Lng      float64 `json:"lng,omitempty"`
+	// 	OffNadir float64 `json:"off_nadir,omitempty"`
+	// } `json:"sat,omitempty"`
 
-	// // Sun struct {
-	// // 	Altitude       float64 `json:"altitude,omitempty"`
-	// // 	Azimuth        float64 `json:"azimuth,omitempty"`
-	// // 	LocalTimeOfDat float64 `json:"local_time_of_day,omitempty"`
-	// // } `json:"sun,omitempty"`
+	// Sun struct {
+	// 	Altitude       float64 `json:"altitude,omitempty"`
+	// 	Azimuth        float64 `json:"azimuth,omitempty"`
+	// 	LocalTimeOfDat float64 `json:"local_time_of_day,omitempty"`
+	// } `json:"sun,omitempty"`
 }
 
 type Geometry struct {
@@ -50,9 +50,9 @@ type Geometry struct {
 }
 
 type Feature struct {
-	Id         string     `json:"id"`
-	Geometry   Geometry   `json:"geometry,omitempty"`
-	Properties Properties `json:"properties,omitempty"`
+	// Id         string     `json:"id"`
+	// Geometry   Geometry   `json:"geometry,omitempty"`
+	// Properties Properties `json:"properties,omitempty"`
 }
 
 type FeatureListParams struct {

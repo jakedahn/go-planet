@@ -1,8 +1,6 @@
 package planet
 
 import (
-	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"testing"
@@ -13,34 +11,32 @@ import (
 func TestPlanetScenes(t *testing.T) {
 
 	Convey("Test Scenes Client", t, func() {
+		jsonFixture, err := ioutil.ReadFile("../test/scenes_index.json")
+		So(err, ShouldBeNil)
 		mux, testServer := testServer()
 		defer testServer.Close()
 
 		Convey("Test Scene List /v0/scenes/ortho", func() {
-			file, err := ioutil.ReadFile("../test/scenes_index.json")
-
-			stuff := new(FeatureCollection)
-			err = json.Unmarshal(file, stuff)
-			So(err, ShouldBeNil)
-
 			req := &http.Request{}
 			mux.HandleFunc("/v0/scenes/ortho", func(w http.ResponseWriter, r *http.Request) {
 				req = r
-				fmt.Print(file)
+				w.Write(jsonFixture)
 			})
 
-			fmt.Println("###")
-			fmt.Println(req)
-			fmt.Println("###")
-
 			client := NewClient("testkey", testServer.URL)
-			params := &FeatureListParams{SatId: "1234"}
+			params := &FeatureListParams{SatId: "0815"}
 			featureCollection, rsp, err := client.Scenes.List(params)
-
 			So(err, ShouldBeNil)
 
-			So(rsp, ShouldNotBeNil)
-			So(featureCollection, ShouldNotBeNil)
+			Convey("Test that the server can process all parameters", func() {
+				So(req.URL.Path, ShouldEqual, "/v0/scenes/ortho")
+			})
+
+			Convey("Test that the client response contains a FeatureCollection", func() {
+				So(featureCollection, ShouldNotBeNil)
+			})
+
+			So(rsp.StatusCode, ShouldEqual, 200)
 		})
 
 	})

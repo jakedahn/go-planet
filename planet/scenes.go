@@ -18,7 +18,7 @@ func NewSceneService(sling *sling.Sling) *SceneService {
 
 func (s *SceneService) List(params *FeatureListParams) (*FeatureCollection, *http.Response, error) {
 	featureCollection := new(FeatureCollection)
-	resp, err := s.sling.New().Get("").QueryStruct(params).Receive(featureCollection)
+	resp, err := s.sling.New().QueryStruct(params).Receive(featureCollection, nil)
 
 	if err != nil {
 		return featureCollection, resp, err

@@ -23,13 +23,15 @@ func TestPlanetScenes(t *testing.T) {
 		testServerRequest := &http.Request{}
 		mux.HandleFunc("/v0/scenes/ortho", func(w http.ResponseWriter, r *http.Request) {
 			testServerRequest = r
+			w.Header().Set("Content-Type", "application/json")
 			w.Write(jsonFixture)
 		})
 
 		// instantiating new client
 		client := NewClient("testkey", testServer.URL)
 		So(client.apiKey, ShouldEqual, "testkey")
-		So(client.sling.RawUrl, ShouldEqual, testServer.URL)
+		req, _ := client.sling.Request()
+		So(req.URL.String(), ShouldEqual, testServer.URL)
 
 		Convey("the List method should", func() {
 			params := &FeatureListParams{SatId: "0815", FileSizeGreaterThan: "10"}
